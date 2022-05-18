@@ -20,6 +20,6 @@ public class Member {
     @Embedded
     private Address addrss;
 
-    @OneToMany(mappedBy = "member_id")      // order table에 있는 member 필드에 의해서 맵핑된 거울일 뿐이다
+    @OneToMany(mappedBy = "member")      // order table에 있는 member 필드에 의해서 맵핑된 거울일 뿐이다
     private List<Order> orders = new ArrayList<Order>();
 }

@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@Table(name = "order_item")
 public class OrderItem {
 
     @Id @GeneratedValue
@@ -15,7 +16,7 @@ public class OrderItem {
     private  Long id;
 
     @ManyToOne
-    @JoinColumn("item_id")
+    @JoinColumn(name = "item_id")
     private Item item;
 
     @ManyToOne
