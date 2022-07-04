@@ -71,18 +71,29 @@ public class ItemController {
         return "items/updateItemForm";
     }
 
+    // merge 방식
+//    @PostMapping("/items/{itemId}/edit")
+//    public String updateItemByMerge(BookForm form) {
+//
+//        Book book = new Book();
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setName(form.getName());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+//        book.setId(form.getId());
+//        book.setPrice(form.getPrice());
+//
+//        itemService.saveItem(book);
+//
+//        return "redirect:/items";
+//    }
+
+
+    // 변경감지 방식. 추천.
     @PostMapping("/items/{itemId}/edit")
     public String updateItem(BookForm form) {
 
-        Book book = new Book();
-        book.setStockQuantity(form.getStockQuantity());
-        book.setName(form.getName());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-        book.setId(form.getId());
-        book.setPrice(form.getPrice());
-
-        itemService.saveItem(book);
+        itemService.updateItem((form.getId()), form.getName(), form.getPrice(), form.getStockQuantity());
 
         return "redirect:/items";
     }

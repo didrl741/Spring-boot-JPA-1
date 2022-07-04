@@ -20,6 +20,17 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item findItem = itemRepository.findOne(itemId);
+
+        findItem.setPrice(price);
+        findItem.setName(name);
+        findItem.setStockQuantity(stockQuantity);
+
+        // findItem.change(name, price, stockQuantity); 있으면 매우 좋다.
+    }
+
     public Item findOne(Long itemId) {
         return itemRepository.findOne(itemId);
     }
